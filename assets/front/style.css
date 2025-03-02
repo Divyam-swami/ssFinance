@@ -115,7 +115,7 @@ body {
     font-weight: bold;
     cursor: pointer;
     position: relative;
-    z-index: 1;
+    
     overflow: hidden;
    }
    
@@ -164,10 +164,13 @@ body {
 
 
   /* contact form */
-  #contact .form-control{
+   .form-control{
     padding: 20px 20px;
     border-radius: 10px;
   }
+
+
+
 
 
   /* Login Form  */
@@ -264,6 +267,10 @@ body {
     background-color: #BDB395;
   }
   
+.swal2-confirm {
+    position: relative;
+}
+
   .p {
     text-align: center;
     color: black;
@@ -299,5 +306,6 @@ body {
      top: 50px;
      right: 50px;
      transition: all .5s ease-in-out;
+     z-index: 0;
 
   }

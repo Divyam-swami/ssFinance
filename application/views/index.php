@@ -13,6 +13,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"  />
+  <!-- SweetAlert2 CDN -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 </head>
 <body>
   <!-- Navbar -->
@@ -60,7 +63,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       <span class="span">Forgot password?</span>
     </div>
     <button class="sub">Sign In</button>
-    <p class="p">Don't have an account? <span class="span">Sign Up</span>
+    <p class="p">Don't have an account? <span class="span" id="sign_up">Sign Up</span>
 
     </p></form>
   </section>
@@ -204,8 +207,81 @@ At SS Loans, we understand that every financial journey is unique. Our expertise
   <!-- success or faliure toast -->
 
   <!-- signupform -->
-   <div class="position-absolute">
-      <div></div>
+   <div class="position-fixed d-none d-flex justify-content-center align-items-center " id="register_form" style=" height:100%; top:0; z-index-1000; width:100%; background-color:#0000008c;">
+   <div class="card px-4 py-2 shadow-lg rounded-4 mt-4" style="width: 800px; z-index-1000;">
+        <h4 class="text-center">Sign Up</h4>
+
+        <form id="signupForm "  style="z-index-1000;">
+            <!-- Name -->
+             
+                        <div class="input-group mb-1">
+                <span class="input-group-text"><i class="fas fa-user"></i></span>
+                <input type="text" id="signupName" class="form-control" placeholder="Enter your Name" required>
+            </div>
+
+            <!-- Email -->
+                        <div class="input-group mb-1">
+                <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+                <input type="email" id="signupEmail" class="form-control" placeholder="Enter your Email" required>
+            </div>
+
+            <!-- Password -->
+                        <div class="input-group mb-1">
+                <span class="input-group-text"><i class="fas fa-lock"></i></span>
+                <input type="password" id="signupPassword" class="form-control" placeholder="Enter your Password" required>
+                <span class="input-group-text">
+                    <i class="fas fa-eye" id="togglePassword" style="cursor: pointer;"></i>
+                </span>
+            </div>
+
+            <!-- Designation -->
+                        <div class="input-group mb-1">
+                <span class="input-group-text"><i class="fas fa-briefcase"></i></span>
+                <input type="text" id="signupDesignation" class="form-control" placeholder="Enter your Designation" required>
+            </div>
+
+            <!-- Salary -->
+                        <div class="input-group mb-1">
+                <span class="input-group-text"><i class="fas fa-dollar-sign"></i></span>
+                <input type="number" id="signupSalary" class="form-control" placeholder="Enter your Salary" required>
+            </div>
+
+            <!-- Monthly Income -->
+            
+            <div class="input-group mb-4">
+                <span class="input-group-text"><i class="fas fa-wallet"></i></span>
+                <input type="number" id="signupMonthly" class="form-control" placeholder="Enter Monthly Income" required>
+            </div>
+
+            <!-- Phone Number -->
+            
+            <div class="input-group mb-4">
+                <span class="input-group-text"><i class="fas fa-phone"></i></span>
+                <input type="tel" id="signupPhone" class="form-control" placeholder="Enter your Phone Number" required>
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit" class=" hero-button w-100 mt-4">Sign Up</button>
+        </form>
+
+        <!-- Already have an account -->
+        <p class="text-center mt-3">Already have an account? <a href="#" class="text-primary">Sign In</a></p>
+    </div>
+
+    <script>
+        // Toggle password visibility
+        document.getElementById("togglePassword").addEventListener("click", function () {
+            let passwordField = document.getElementById("signupPassword");
+            if (passwordField.type === "password") {
+                passwordField.type = "text";
+                this.classList.replace("fa-eye", "fa-eye-slash");
+            } else {
+                passwordField.type = "password";
+                this.classList.replace("fa-eye-slash", "fa-eye");
+            }
+        });
+    </script>
+
    </div>
   <!-- signupform -->
  
@@ -281,19 +357,39 @@ $('#login-button').click(function(){
       },
       dataType:'json',
       success: function(response) {
-                        $("#message").text(response.message);
-                        if (response.status === "success") {
-                            $("#contactForm")[0].reset();
-                            showToast(response.message, "success");
-                        }else{
-                          showToast(response.message, "error");
-                        }
+        if (response.status === "success") {
+                Swal.fire({
+                    title: "Success!",
+                    text: response.message,
+                    icon: "success",
+                    timer: 2000,
+                    showConfirmButton: false
+                }).then(() => {
+                    $("#contactForm")[0].reset(); // Reset the form
+                    window.location.reload(); // Reload page to show new data
+                });
+            } else {
+                Swal.fire({
+                    title: "Error!",
+                    text: response.message,
+                    icon: "error"
+                });
+            }
                     },
                     error: function() {
-                        showToast("An error occurred. Please try again.", "error");
-                      }
+            Swal.fire({
+                title: "Oops!",
+                text: "An error occurred. Please try again.",
+                icon: "error"
+            });
+        }
     })
   }
+
+  $('#sign_up').click(function(){
+    $('#login-box').addClass('d-none')
+    $('#register_form').fadeIn().toggleClass('d-none')
+  })
 </script>
 </body>
 </html>
