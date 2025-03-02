@@ -1,0 +1,303 @@
+*{
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+}
+
+@font-face {
+    font-family: nureca;
+    src: url(../fonts/Recoleta\ Alt\ Regular.otf);
+}
+
+@font-face {
+    font-family: nreacabold;
+    src: url(../fonts/Recoleta\ Black.otf);
+}
+
+/* Custom Styles */
+body {
+    font-family: nureca;
+    background-color: #f8f9fa;
+  }
+
+  h1,h2,h3,h4,h5,h6{
+    font-family: nreacabold;
+  }
+
+
+  a{
+    text-decoration: none;
+    color: black;
+  }
+  
+  .navbar {
+    transition: background-color 0.3s ease;
+    background-color: #0D4715;
+  }
+  
+  .navbar.scrolled {
+    background-color: #343a40 !important;
+  }
+  
+  .hero-section {
+    height: 70vh;
+    background-color: #F1F0E9;
+    background-size: cover;
+    background-position: center;
+    color: white;
+  }
+
+  .hero-section h1{
+    font-size: 4.5vw;
+    text-wrap: nowrap;
+  }
+  
+  .feature-item {
+    background: #BDB395;
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+    min-height: 130px;
+    padding: 20px;
+  }
+
+  .feature-item h3{
+    color: #0D4715;
+    margin-top: 20px;
+  }
+
+  .feature-item p{
+    color: black;
+    font-size: 14px;
+  }
+
+  .feature-item i{
+    color: #343a40;
+    font-size: 70px;
+    display: block;
+   margin: 40px 0px 45px 0px;
+  }
+  
+  .feature-item:hover {
+    transform: translateY(-10px);
+  }
+  
+  footer {
+    background-color: #343a40;
+  }
+
+
+  /* buttons */
+  /* From Uiverse.io by CristianMontoya98 */ 
+.login-button {
+    width: 6.5em;
+    height: 2.3em;
+    background: #E9762B;
+    color: black;
+    border: none;
+    border-radius: 0.625em;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+   }
+
+
+   .hero-button{
+
+    background: #E9762B;
+    color: black;
+    border: none;
+    padding: 10px 40px;
+    border-radius: 0.625em;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+   }
+   
+   button:hover {
+    color: black;
+   }
+   
+   button:after {
+    content: "";
+    background: white;
+    position: absolute;
+    z-index: -1;
+    left: -20%;
+    right: -20%;
+    top: 0;
+    bottom: 0;
+    transform: skewX(-45deg) scale(0, 1);
+    transition: all 0.5s;
+   }
+   
+   button:hover:after {
+    transform: skewX(-45deg) scale(1, 1);
+    -webkit-transition: all 0.5s;
+    transition: all 0.5s;
+   }
+  /* buttons */
+
+  .hero-img-section img{
+    height: 100%;
+    width: 100%;
+    scale: 1.5;
+  }
+
+  #features{
+    padding: 100px 100px  !important;
+  }
+
+  #about{
+    background-color: #F1F0E9;
+    padding: 100px 100px  !important;
+  }
+
+  #about p span{
+    font-family: nreacabold;
+  }
+
+
+  /* contact form */
+  #contact .form-control{
+    padding: 20px 20px;
+    border-radius: 10px;
+  }
+
+
+  /* Login Form  */
+  /* From Uiverse.io by micaelgomestavares */ 
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background-color: #ffffff;
+    padding: 30px;
+    width: 450px;
+    border-radius: 20px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  }
+  
+  ::placeholder {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  }
+  
+  .form button {
+    align-self: flex-end;
+  }
+  
+  .flex-column > label {
+    color: #151717;
+    font-weight: 600;
+  }
+  
+  .inputForm {
+    border: 1.5px solid #ecedec;
+    border-radius: 10px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+    transition: 0.2s ease-in-out;
+  }
+  
+  .input {
+    margin-left: 10px;
+    border-radius: 10px;
+    border: none;
+    width: 85%;
+    height: 100%;
+  }
+  
+  .input:focus {
+    outline: none;
+  }
+  
+  .inputForm:focus-within {
+    border: 1.5px solid #2d79f3;
+  }
+  
+  .flex-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    justify-content: space-between;
+  }
+  
+  .flex-row > div > label {
+    font-size: 14px;
+    color: black;
+    font-weight: 400;
+  }
+  
+  .span {
+    font-size: 14px;
+    margin-left: 5px;
+    color: #2d79f3;
+    font-weight: 500;
+    cursor: pointer;
+  }
+  
+  .sub {
+    margin: 20px 0 10px 0;
+    background-color: #151717;
+    border: none;
+    color: white;
+    font-size: 15px;
+    font-weight: 500;
+    border-radius: 10px;
+    height: 50px;
+    width: 100%;
+    cursor: pointer;
+    overflow: hidden;
+    position: relative;
+    transition: all .3s ease-in-out;
+  }
+  
+  .sub:hover {
+    background-color: #BDB395;
+  }
+  
+  .p {
+    text-align: center;
+    color: black;
+    font-size: 14px;
+    margin: 5px 0;
+  }
+  
+  .btn {
+    margin-top: 10px;
+    width: 100%;
+    height: 50px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 500;
+    gap: 10px;
+    border: 1px solid #ededef;
+    background-color: white;
+    cursor: pointer;
+    transition: 0.2s ease-in-out;
+  }
+  
+  .btn:hover {
+    border: 1px solid #2d79f3;
+    ;
+  }
+  
+      
+  /* Login Form  */
+
+  #login-box{
+     top: 50px;
+     right: 50px;
+     transition: all .5s ease-in-out;
+
+  }
